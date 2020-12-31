@@ -1,7 +1,7 @@
 {
   "name": "@cdr0/polyrepo",
   "version": "1.0.1",
-  "description": "",
+  "description": "The evil-opposite of monorepos, because almost all tooling assumes one github repo is one 'thing'.",
   "main": "index.js",
   "scripts": {
     "test": "ava"
