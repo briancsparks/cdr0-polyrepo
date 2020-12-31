@@ -2,7 +2,10 @@
 const test            = require('ava');
 const mkPrequire      = require('..');
 
-const prequire        = mkPrequire(__dirname, {polyPkgs:[]});
+const polyrepoRequire        = mkPrequire(__dirname, {polyPkgs:[]});
+const prequire = function (name) {
+  return polyrepoRequire(name) || require(name);
+};
 
 // -------------------------------------------------------------------------------------------------------------------
 test('ava works', (t) => {
@@ -10,6 +13,7 @@ test('ava works', (t) => {
 });
 
 test('prequire', (t) => {
+  // const mod = prequire('dotenv') || require('dotenv');
   const mod = prequire('dotenv');
 
   t.is(typeof mod, "object");
