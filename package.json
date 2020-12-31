@@ -17,6 +17,7 @@
     "ava": "^3.14.0"
   },
   "dependencies": {
+    "@cdr0/active-development": "^1.0.2",
     "dotenv": "^8.2.0"
   }
 }
