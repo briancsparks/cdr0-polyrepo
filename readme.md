@@ -16,6 +16,7 @@ Assuming you have `@mygreat/library` and `@mygreat/app`.
 `dev` will be the parent of all your repos:
 
 ```shell
+cd
 mkdir dev && cd $_
 mkdir library
 mkdir app
@@ -26,10 +27,12 @@ mkdir app
 In each repo, add `polyrepo`, and prepare the magic directory for your proxy scripts:
 
 ```shell
+cd
 cd library
 npm i -S @cdr0/polyrepo
 mkdir polyrepo
 
+cd
 cd app
 npm i -S @cdr0/polyrepo
 mkdir polyrepo
@@ -37,6 +40,7 @@ touch polyrepo/mygreat-library.js
 touch polyrepo/mygreat-other-thing.js
 # ... touch more libs / packages ...
 
+cd
 cd somewhereelse
 # ... npm, mkdir, touch ...
 
