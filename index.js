@@ -63,9 +63,7 @@ function mkPolyrepoRequire(theirDirname, config ={}) {
     // Maybe their repo is a sibling
     result = requireSiblingOfTheirs(theirDirname, name);
     if (result) {
-      // step = `their_sibling__${theirDirname}`;
-      step = `their_sibling__`;
-      console.log(`their sibling`, {theirDirname, name})
+      step = `their_sibling__${theirDirname}`;
       return loud(result);
     }
 
@@ -97,7 +95,9 @@ function mkPolyrepoRequire(theirDirname, config ={}) {
         msg += `, at step ${step}`;
       }
 
-      console.log(msg);
+      if (process.env.CDR0_POLYREPO_VERBOSE) {
+        console.log(msg);
+      }
 
       return result;
     }
@@ -123,7 +123,10 @@ function mkPolyrepoRequire(theirDirname, config ={}) {
       const fullname = path.join(dirname, name);
 
       try {
-        console.log(`REQUIRING ${fullname}`)
+        if (process.env.CDR0_POLYREPO_VERBOSE2) {
+          console.log(`REQUIRING ${fullname}`)
+        }
+
         const result = require(fullname);
         requiredName = fullname;
         return result;
