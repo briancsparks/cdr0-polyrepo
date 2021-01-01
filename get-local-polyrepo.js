@@ -14,24 +14,40 @@
 // (1) - Copy this line (or one like it for one of your polyrepo libs) into polyrepo/cdr0-sg.js,
 // or appropriate file.
 //
-// const polyPkgs = ['@cdr0/sg', '@cdr0/grumpy'];
-//
-// module.exports = require('./get-local-polyrepo')(__dirname, polyPkgs)('@cdr0/sg');
-// module.exports = require('./get-local-polyrepo')(__dirname, polyPkgs)('@cdr0/grumpy');
+/*
+
+// Choose one, and comment-out the other.
+const polyrepoLib = './get-local-polyrepo';     // Use this when changing polyrepo, itself
+const polyrepoLib = '@cdr0/polyrepo';           // Use this normally (the version in npm works for your needs)
+
+// Build the prequire (poly-require) function
+const polyrepoRequire   = require(polyrepoLib)(__dirname);
+
+// The function that will get called, whose results will be the package requested.
+const prequire  = function (name) {
+  return polyrepoRequire(name) || require(name);
+};
+
+module.exports = prequire('@cdr0/sg');
+
+*/
 
 // (2) - require the above file, instead of the plain package in whatever files you need
 //
-// const sg                      = require('../../polyrepo/cdr0-sg');
-// const grumpy                  = require('../../polyrepo/cdr0-grumpy');
-//
-// const sg                      = require('./polyrepo/cdr0-sg');
-// const grumpy                  = require('./polyrepo/cdr0-grumpy');
+/*
 
-// -------------------------------------------------------------------------------------------------------------------
+const sg                      = require('../../polyrepo/cdr0-sg');
+const grumpy                  = require('../../polyrepo/cdr0-grumpy');
+
+const sg                      = require('./polyrepo/cdr0-sg');
+const grumpy                  = require('./polyrepo/cdr0-grumpy');
+*/
+
+// --------------------------------------------------------------------------------------------------------------------
 module.exports = getUnpublishedPolyrepo;
 
 
-// -------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 function getUnpublishedPolyrepo(dirname, config ={}) {
   // Returns a function that is equivalent to the caller doing 'require("@cdr0/polyrepo")', but prefers a local copy
 
